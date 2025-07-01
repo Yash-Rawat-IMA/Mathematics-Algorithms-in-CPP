@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-int clearIbit(int n, int i)
+int clearIbitXOR(int n, int i)
 {
     i=i-1;
     if((n & (1<<i)) != 0)
@@ -9,6 +9,12 @@ int clearIbit(int n, int i)
     }
     return n;
 }
+
+int clearIbitAND(int n , int i)
+{
+    i=i-1;
+    return (n & (~(1<<i))); 
+}
 int main()
 {
     int n,i;
@@ -16,7 +22,9 @@ int main()
     cin>>n;
     cout<<"Enter the position of bit you want to clear: ";
     cin>>i;
-    n=clearIbit(n, i);
+    n=clearIbitXOR(n, i);
+    cout<<n<<endl;
+    n=clearIbitAND(n, i);
     cout<<n;
     return 0;
 }
